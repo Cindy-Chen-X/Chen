@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>給潘塏澄的一封信</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600&family=Quicksand:wght@400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: #e8ecff;
+  font-family: "Noto Serif TC", serif;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(91, 113, 180, 0.14), transparent 28%),
+    radial-gradient(circle at 80% 30%, rgba(111, 91, 180, 0.10), transparent 30%),
+    radial-gradient(circle at 50% 90%, rgba(64, 91, 160, 0.12), transparent 32%),
+    linear-gradient(145deg, #080d20 0%, #0c1430 45%, #080d20 100%);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.65;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.7) 0 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(180,205,255,0.5) 0 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(255,255,255,0.35) 0 1px, transparent 1.5px);
+  background-size: 170px 170px, 230px 230px, 310px 310px;
+  background-position: 20px 30px, 80px 120px, 150px 60px;
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center, transparent 35%, rgba(2, 5, 18, 0.42) 100%);
+  z-index: -1;
+}
+
+/* ---------- layout ---------- */
+
+.page {
+  display: none;
+  min-height: 100vh;
+  padding: 70px 20px 110px;
+  animation: fadeIn 0.7s ease;
+}
+
+.page.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-inner {
+  width: min(760px, 100%);
+  margin: 0 auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- cover ---------- */
+
+.cover {
+  text-align: center;
+  position: relative;
+}
+
+.cover .small-line {
+  color: #9eacd6;
+  font-family: "Quicksand", sans-serif;
+  font-size: 12px;
+  letter-spacing: 4px;
+  margin-bottom: 25px;
+}
+
+.cover h1 {
+  margin: 0;
+  font-size: clamp(34px, 8vw, 62px);
+  font-weight: 500;
+  letter-spacing: 5px;
+  color: #f0f3ff;
+  text-shadow: 0 0 30px rgba(150, 175, 255, 0.22);
+}
+
+.cover .subtitle {
+  margin-top: 28px;
+  color: #9da9cb;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.cover-moon {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 38px;
+  border-radius: 50%;
+  background: #e9edff;
+  box-shadow:
+    0 0 25px rgba(210, 220, 255, 0.4),
+    0 0 70px rgba(130, 155, 255, 0.12);
+  position: relative;
+}
+
+.cover-moon::after {
+  content: "";
+  position: absolute;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: #0a1025;
+  left: 23px;
+  top: -8px;
+}
+
+/* ---------- cards ---------- */
+
+.card {
+  position: relative;
+  background: rgba(12, 20, 47, 0.78);
+  border: 1px solid rgba(174, 190, 235, 0.16);
+  border-radius: 22px;
+  padding: 48px 52px;
+  box-shadow:
+    0 20px 70px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255,255,255,0.04);
+  backdrop-filter: blur(10px);
+}
+
+.card.preface {
+  text-align: left;
+}
+
+.card-title {
+  margin: 0 0 28px;
+  font-size: 15px;
+  font-family: "Quicksand", sans-serif;
+  letter-spacing: 3px;
+  color: #aebbe3;
+}
+
+.card p {
+  margin: 0 0 22px;
+  font-size: 16px;
+  line-height: 2.05;
+  color: #e3e7f5;
+  letter-spacing: 0.5px;
+}
+
+.card p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- letter + moon outside ---------- */
+
+/*
+  重點：
+  moon-holder 與 letter-card 是兄弟元素，
+  月亮不再放進文字框裡，因此絕對不會蓋住文字。
+*/
+
+.letter-layout {
+  position: relative;
+  width: min(820px, 100%);
+  margin: 0 auto;
+}
+
+.letter-card {
+  position: relative;
+  width: min(760px, 100%);
+  margin: 0 auto;
+}
+
+.moon-holder {
+  position: absolute;
+  width: 62px;
+  height: 62px;
+  right: -10px;
+  top: -28px;
+  z-index: 10;
+}
+
+.moon {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #edf1ff;
+  cursor: pointer;
+  position: relative;
+  box-shadow:
+    0 0 18px rgba(220, 228, 255, 0.42),
+    0 0 42px rgba(150, 175, 255, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.moon:hover {
+  transform: scale(1.08);
+  box-shadow:
+    0 0 25px rgba(220, 228, 255, 0.6),
+    0 0 55px rgba(150, 175, 255, 0.22);
+}
+
+.moon::after {
+  content: "";
+  position: absolute;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #0c1430;
+  left: 18px;
+  top: -6px;
+}
+
+.moon-hint {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 68px;
+  left: 0;
+  color: rgba(175, 190, 230, 0.55);
+  font-family: "Quicksand", sans-serif;
+  font-size: 9px;
+  letter-spacing: 1px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.moon-holder:hover .moon-hint {
+  opacity: 1;
+}
+
+/* ---------- buttons ---------- */
+
+.nav-area {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 9px 12px;
+  border-radius: 40px;
+  background: rgba(7, 12, 30, 0.78);
+  border: 1px solid rgba(174, 190, 235, 0.14);
+  backdrop-filter: blur(12px);
+}
+
+.nav-btn,
+.action-btn {
+  border: 1px solid rgba(181, 195, 235, 0.2);
+  background: rgba(28, 40, 78, 0.72);
+  color: #dfe6ff;
+  border-radius: 30px;
+  padding: 9px 18px;
+  font-family: "Noto Serif TC", serif;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.nav-btn:hover,
+.action-btn:hover {
+  background: rgba(52, 68, 116, 0.8);
+  border-color: rgba(190, 205, 255, 0.35);
+  transform: translateY(-1px);
+}
+
+.nav-btn:disabled {
+  opacity: 0.25;
+  cursor: default;
+  transform: none;
+}
+
+.page-counter {
+  min-width: 58px;
+  text-align: center;
+  color: #8e9ac1;
+  font-family: "Quicksand", sans-serif;
+  font-size: 11px;
+}
+
+/* ---------- modal ---------- */
+
+.egg-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(3, 6, 18, 0.78);
+  backdrop-filter: blur(8px);
+}
+
+.egg-overlay.show {
+  display: flex;
+  animation: fadeIn 0.3s ease;
+}
+
+.egg-modal {
+  width: min(600px, 100%);
+  max-height: 82vh;
+  overflow-y: auto;
+  padding: 38px 38px 30px;
+  border-radius: 22px;
+  background: #101a3b;
+  border: 1px solid rgba(177, 193, 238, 0.2);
+  box-shadow: 0 25px 80px rgba(0,0,0,0.45);
+}
+
+.egg-modal p {
+  margin: 0 0 25px;
+  color: #e3e8fa;
+  line-height: 2;
+  font-size: 15px;
+  white-space: pre-line;
+}
+
+.return-btn {
+  display: block;
+  margin: 0 auto;
+  border: 1px solid rgba(181, 195, 235, 0.2);
+  background: rgba(37, 52, 93, 0.7);
+  color: #dfe6ff;
+  padding: 9px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: "Noto Serif TC", serif;
+}
+
+/* ---------- checklist ---------- */
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 38px;
+}
+
+.section-heading h2 {
+  margin: 0 0 10px;
+  font-size: 27px;
+  font-weight: 500;
+  letter-spacing: 3px;
+}
+
+.section-heading span {
+  color: #8290b9;
+  font-family: "Quicksand", sans-serif;
+  font-size: 10px;
+  letter-spacing: 4px;
+}
+
+.check-group {
+  margin-bottom: 32px;
+}
+
+.check-group-title {
+  margin: 0 0 13px 4px;
+  color: #9faed4;
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+.check-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 13px 15px;
+  margin-bottom: 6px;
+  border-radius: 12px;
+  color: #dfe5f7;
+  font-size: 14px;
+  line-height: 1.7;
+  transition: background 0.25s ease;
+  cursor: default;
+}
+
+.check-item.clickable {
+  cursor: pointer;
+}
+
+.check-item.clickable:hover {
+  background: rgba(125, 145, 205, 0.08);
+}
+
+.check-icon {
+  flex: 0 0 auto;
+  color: #9faed4;
+  font-family: "Quicksand", sans-serif;
+}
+
+.check-item.done {
+  color: #aeb7d2;
+}
+
+.check-item.done .check-icon {
+  color: #8d9cc6;
+}
+
+.check-item.todo .check-icon {
+  color: #7785ad;
+}
+
+.egg-message {
+  display: none;
+  margin: 2px 0 10px 29px;
+  padding: 14px 17px;
+  border-left: 1px solid rgba(155, 174, 225, 0.35);
+  background: rgba(92, 112, 170, 0.055);
+  color: #bbc5e2;
+  font-size: 13px;
+  line-height: 1.9;
+  white-space: pre-line;
+  border-radius: 0 10px 10px 0;
+}
+
+.egg-message.show {
+  display: block;
+  animation: fadeIn 0.25s ease;
+}
+
+/* ---------- egg score ---------- */
+
+.egg-score {
+  text-align: center;
+}
+
+.score-number {
+  margin: 10px 0 6px;
+  font-family: "Quicksand", sans-serif;
+  font-size: 58px;
+  color: #e9edff;
+  text-shadow: 0 0 30px rgba(160, 180, 255, 0.2);
+}
+
+.score-total {
+  color: #8491b8;
+  font-family: "Quicksand", sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.score-message {
+  max-width: 500px;
+  margin: 28px auto 0;
+  color: #c0c9e3;
+  line-height: 1.9;
+  font-size: 14px;
+}
+
+/* ---------- photos ---------- */
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.photo-card {
+  overflow: hidden;
+  border-radius: 16px;
+  background: rgba(14, 23, 51, 0.75);
+  border: 1px solid rgba(177, 193, 238, 0.12);
+}
+
+.photo-card:first-child {
+  grid-column: span 2;
+}
+
+.photo-card img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.photo-card:first-child img {
+  aspect-ratio: 16 / 9;
+}
+
+.photo-caption {
+  padding: 12px 14px 15px;
+  color: #cbd3e8;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ---------- forms ---------- */
+
+.form-card {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 9px;
+  color: #aab7da;
+  font-size: 13px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  border: 1px solid rgba(176, 193, 235, 0.15);
+  outline: none;
+  border-radius: 12px;
+  padding: 13px 14px;
+  color: #e5eaff;
+  background: rgba(5, 11, 29, 0.55);
+  font-family: "Noto Serif TC", serif;
+  font-size: 14px;
+  transition: border 0.25s ease, background 0.25s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: rgba(174, 194, 245, 0.4);
+  background: rgba(8, 15, 38, 0.72);
+}
+
+.form-group textarea {
+  min-height: 160px;
+  resize: vertical;
+  line-height: 1.8;
+}
+
+.submit-area {
+  text-align: center;
+  margin-top: 28px;
+}
+
+.submit-btn {
+  border: 1px solid rgba(181, 195, 235, 0.24);
+  background: rgba(38, 54, 96, 0.8);
+  color: #e5eaff;
+  border-radius: 28px;
+  padding: 11px 28px;
+  cursor: pointer;
+  font-family: "Noto Serif TC", serif;
+  transition: 0.25s ease;
+}
+
+.submit-btn:hover {
+  background: rgba(54, 72, 120, 0.9);
+  transform: translateY(-1px);
+}
+
+.form-status {
+  margin-top: 14px;
+  text-align: center;
+  color: #9eacd0;
+  font-size: 12px;
+}
+
+/* ---------- final ---------- */
+
+.final-page {
+  text-align: center;
+}
+
+.final-page h2 {
+  margin: 0;
+  font-size: clamp(32px, 7vw, 50px);
+  font-weight: 500;
+  letter-spacing: 4px;
+  color: #edf0ff;
+  text-shadow: 0 0 35px rgba(160, 180, 255, 0.2);
+}
+
+.final-page p {
+  margin: 25px auto 35px;
+  color: #8e9abe;
+  font-size: 13px;
+}
+
+.restart-btn {
+  border: 1px solid rgba(181, 195, 235, 0.22);
+  background: rgba(30, 44, 82, 0.78);
+  color: #dfe6ff;
+  border-radius: 30px;
+  padding: 11px 24px;
+  cursor: pointer;
+  font-family: "Noto Serif TC", serif;
+}
+
+/* ---------- stars ---------- */
+
+.shooting-star {
+  position: fixed;
+  width: 90px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(205,220,255,0.6));
+  transform: rotate(-28deg);
+  opacity: 0;
+  pointer-events: none;
+  animation: shooting 7s linear infinite;
+}
+
+.shooting-star.one {
+  top: 18%;
+  left: 8%;
+  animation-delay: 1s;
+}
+
+.shooting-star.two {
+  top: 32%;
+  right: 5%;
+  animation-delay: 4s;
+  transform: rotate(-32deg);
+}
+
+@keyframes shooting {
+  0%, 72% {
+    opacity: 0;
+    transform: translate(0,0) rotate(-28deg);
+  }
+  76% {
+    opacity: 0.65;
+  }
+  86% {
+    opacity: 0;
+    transform: translate(150px, 100px) rotate(-28deg);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ---------- mobile ---------- */
+
+@media (max-width: 700px) {
+
+  .page {
+    padding: 55px 15px 100px;
+  }
+
+  .card {
+    padding: 34px 24px;
+    border-radius: 18px;
+  }
+
+  .card p {
+    font-size: 15px;
+    line-height: 1.95;
+  }
+
+  /*
+    手機版月亮也完全在文字框外。
+    讓它往右上角伸出去，但不進入 card 內容區。
+  */
+  .letter-layout {
+    width: calc(100% - 12px);
+    margin-left: 0;
+  }
+
+  .letter-card {
+    width: 100%;
+  }
+
+  .moon-holder {
+    width: 50px;
+    height: 50px;
+    right: 2px;
+    top: -58px;
+  }
+
+  .moon {
+    width: 46px;
+    height: 46px;
+  }
+
+  .moon::after {
+    width: 46px;
+    height: 46px;
+    left: 14px;
+    top: -5px;
+  }
+
+  .moon-hint {
+    display: none;
+  }
+
+  .photo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-card:first-child {
+    grid-column: span 1;
+  }
+
+  .photo-card:first-child img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .nav-area {
+    bottom: 14px;
+    gap: 7px;
+    padding: 7px 9px;
+  }
+
+  .nav-btn {
+    padding: 8px 13px;
+    font-size: 12px;
+  }
+
+  .page-counter {
+    min-width: 48px;
+  }
+
+  .egg-modal {
+    padding: 30px 24px 24px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="shooting-star one"></div>
+<div class="shooting-star two"></div>
+
+<!-- ==================== PAGE 1：封面 ==================== -->
+
+<section class="page active" id="page1">
+  <div class="page-inner cover">
+
+    <div class="cover-moon"></div>
+
+    <div class="small-line">ONE MONTH</div>
+
+    <h1>給潘塏澄的一封信</h1>
+
+    <div class="subtitle">寫給我們在一起的第一個月</div>
+
+  </div>
+</section>
+
+
+<!-- ==================== PAGE 2：前言 ==================== -->
+
+<section class="page" id="page2">
+  <div class="page-inner">
+
+    <div class="card preface">
+
+      <div class="card-title">FOREWORD</div>
+
+      <p>
+        想不到吧！我們在一起已經一個月了耶！先說，這封信不是因為前幾天晚上聊一聊出現的小作文，是在一起之後陸陸續續打出來的。也因為那天晚上你說的一些話，我決定重新修改一下一些內容。
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==================== PAGE 3：信件 1 ==================== -->
+
+<section class="page" id="page3">
+  <div class="page-inner">
+
+    <div class="letter-layout">
+
+      <!-- 月亮在文字框外 -->
+      <div class="moon-holder">
+        <div class="moon" onclick="showEgg(1)"></div>
+        <div class="moon-hint">click me</div>
+      </div>
+
+      <div class="card letter-card">
+
+        <div class="card-title">01</div>
+
+        <p>
+          三十天說長不長，說短也不短。只是回頭想想，我們實際相處的時間，好像遠遠不及三十天。甚至有時候會覺得，我們現在的交流比起曖昧的時候還少了一些，反而是午夜時的親密接觸，變得比言語交流更多。
+        </p>
+
+        <p>
+          但老實說，跟你在一起的時候，我是真的很開心。就算我們只是抱著彼此、沒有說什麼話，我也會覺得很治癒、很安心。好像也只有在那個時候，我才會很真切地感覺到：「你真的是我的男朋友。」
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==================== PAGE 4：信件 2 ==================== -->
+
+<section class="page" id="page4">
+  <div class="page-inner">
+
+    <div class="card letter-card">
+
+      <div class="card-title">02</div>
+
+      <p>
+        你總是跟我說抱歉，說沒辦法抽出那麼多時間陪我。每次聽到的時候，我其實都會有一點不知如何是好。我知道你有多忙，也知道很多事情不是你想怎麼安排就能怎麼安排。只是有時候，我不知道自己該怎麼面對這些道歉。不接受，好像也沒有辦法改變什麼；接受了，好像也沒辦法真的把那些等待時的難過一筆勾銷。
+      </p>
+
+      <p>
+        我想了很久，我覺得自己真正缺少的是一種「我也在你的生活裡」的感覺。我知道你其實一直有努力把我帶進你的生活裡。你願意讓我認識你的朋友，也不避諱讓我看到、甚至參與你的訊息；你也會努力把工作做完，想辦法留時間給我。這些事情我都有感受到，也真的很珍惜。
+      </p>
+
+      <p>
+        可是另一方面，我自己的生活好像跟以前沒有太大的不同。大多數時候，我還是一個人吃飯、一個人讀書、一個人完成很多事情。偶爾會讓我覺得，我們好像還是各自生活，只是在晚上的某些時候，才有一小段時間變成我們。
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==================== PAGE 5：信件 3 ==================== -->
+
+<section class="page" id="page5">
+  <div class="page-inner">
+
+    <div class="card letter-card">
+
+      <div class="card-title">03</div>
+
+      <p>
+        我應該有跟你說過，我其實是一個很少熬夜的人。現在晚上出來見你，是我心甘情願的，因為我真的很想見你，所以即使知道隔天可能會很累，我還是會捨不得拒絕。而且每次真的見到你之後，就會變得更捨不得分開。可能是因為我總覺得，不知道我們下一次什麼時候才能見面，所以每次抱著你的時候，都會想再抱久一點；每次要分開的時候，也總會有一點點捨不得和失落。
+      </p>
+
+      <p>
+        但我也慢慢發現，心甘情願不代表這就是一個可以一直維持下去的相處方式。我還是需要原本的生活和作息，我也好希望好希望我們的見面有一天不需要靠犧牲睡眠才能成立。
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==================== PAGE 6：信件 4 ==================== -->
+
+<section class="page" id="page6">
+  <div class="page-inner">
+
+    <div class="letter-layout">
+
+      <!-- 月亮在文字框外 -->
+      <div class="moon-holder">
+        <div class="moon" onclick="showEgg(2)"></div>
+        <div class="moon-hint">click me</div>
+      </div>
+
+      <div class="card letter-card">
+
+        <div class="card-title">04</div>
+
+        <p>
+          聊天的時候，我總是開玩笑說系會比我重要，你都會跟我說不是那麼一回事。知道你現在作為系會長，身上的壓力真的很大，所以當你忙到幾乎消失的時候，我好像也慢慢習慣了。甚至有時候會覺得，只要把自己的念想跟期待壓低一點，或是想辦法讓自己忙碌起來，好像就比較不會那麼難過。
+        </p>
+
+        <p>
+          你之前跟我說過：「不要怕給你壓力。」有時候也會想，這句話現在還成立嗎？因為每次心情不太好的時候，我其實不太會第一時間跟你說。常常會覺得，我現在的情緒好像沒有你的工作那麼緊急；或者你當下根本走不開，就算告訴你，好像也只是讓你多一份無能為力和壓力。所以我有時候會想，告訴你「我需要你」，對你來說到底會是一種負擔，還是其實你真的希望我可以把這些真實的需求告訴你？
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==================== PAGE 7：信件 5 ==================== -->
+
+<section class="page" id="page7">
+  <div class="page-inner">
+
+    <div class="letter-layout">
+
+      <!-- 月亮在文字框外 -->
+      <div class="moon-holder">
+        <div class="moon" onclick="showEgg(3)"></div>
+        <div class="moon-hint">click me</div>
+      </div>
+
+      <div class="card letter-card">
+
+        <div class="card-title">05</div>
+
+        <p>
+          至於訊息，我知道你的訊息真的很多，爆炸性的多，我也知道你不是故意忽略我。不過有時候，你跟我分享了你的生活，我很認真地回應你，但你可能只回其中幾句，接著又繼續講自己的事情。久了我會有一點不知道，自己的那些回覆對你來說是不是有被接住。有時候甚至會想，那我是不是按個愛心代表「已閱」就好了。
+        </p>
+
+        <p>
+          我知道這聽起來可能有點小題大作，畢竟都已經在一起了，我卻還是會在意你有沒有回訊息。有時候看到你很久沒有回我，卻已經回了很多工作上的訊息，我還是會忍不住想：「跟我說一聲你現在在忙，好像也沒有那麼難吧。」我沒有希望你任何時候都要秒回我，也沒有要你把我變成所有事情的優先順序。只是希望即使你很忙，我也能感覺到我們還是在交流，而不是我一直在等你有空。(好啦，其實這幾天我能感受到你真的很努力回我訊息了，謝謝你！)
+        </p>
+
+        <p>
+          但你那天晚上跟我說你真的沒有空回訊息的那個表情，真的讓我覺得好心疼又有一點失落，感覺我對你的要求明明就沒有很過分，但放在你身上又覺得很強人所難……所以，如果我上面說的話有些重，拜託不要往心裡去，也不要給自己那麼大的壓力。
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==================== PAGE 8：信件 6 ==================== -->
+
+<section class="page" id="page8">
+  <div class="page-inner">
+
+    <div class="card letter-card">
+
+      <div class="card-title">06</div>
+
+      <p>
+        其實我也不知道你看到這些之後會怎麼想。我沒有覺得這些事情需要我們一次全部解決，也不是想在交往一個月的時候，突然丟給你一大堆問題。只是這些感受確實都存在，我也不希望因為害怕造成你的壓力，就一直假裝自己沒有感覺。如果我們都願意的話，或許可以慢慢找到一個更適合我們的相處方式。
+      </p>
+
+      <p>
+        跟你見面的時間，對我來說一直都是一天裡很治癒的時刻。就算只是陪你工作、坐在旁邊，對我來說都會有一種「我們正在一起生活」的感覺。所以我才會這麼在意這些事情。希望有一天，我們不再只是「你是你的生活、我是我的生活，然後晚上才有一小段時間變成我們」，而是可以慢慢變成「你的生活裡有我，我的生活裡也有你。」我覺得那是我現在最期待的「我們」。
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==================== PAGE 9：生活清單 ==================== -->
+
+<section class="page" id="page9">
+  <div class="page-inner">
+
+    <div class="card">
+
+      <div class="section-heading">
+        <h2>生活清單</h2>
+        <span>OUR LITTLE THINGS</span>
+      </div>
+
+      <div class="check-group">
+
+        <h3 class="check-group-title">已完成</h3>
+
+        <div class="check-item done">
+          <span class="check-icon">☑</span>
+          <span>一起玩密室逃脫</span>
+        </div>
+
+        <div class="check-item done">
+          <span class="check-icon">☑</span>
+          <span>一起逛博物館</span>
+        </div>
+
+        <div class="check-item done">
+          <span class="check-icon">☑</span>
+          <span>解鎖第一次在台南吃飯</span>
+        </div>
+
+        <div class="check-item done">
+          <span class="check-icon">☑</span>
+          <span>一起去河樂廣場&amp;海安路</span>
+        </div>
+
+        <div class="check-item done">
+          <span class="check-icon">☑</span>
+          <span>幫對方慶生</span>
+        </div>
+
+        <div class="check-item done">
+          <span class="check-icon">☑</span>
+          <span>一起跳第一支舞😶‍🌫️</span>
+        </div>
+
+      </div>
+
+
+      <div class="check-group">
+
+        <h3 class="check-group-title">未完成</h3>
+
+        <div class="check-item todo clickable"
+             onclick="toggleDropdown('egg4')">
+          <span class="check-icon">☐</span>
+          <span>去海邊看夕陽</span>
+        </div>
+
+        <div class="egg-message" id="egg4">
+【敘述題】其實現在沒那麼想玩仙女棒了哈哈哈！
+【解】潘先生再找點其他事情跟我一起做吧～～～
+        </div>
+
+
+        <div class="check-item todo">
+          <span class="check-icon">☐</span>
+          <span>去奇美放風箏</span>
+        </div>
+
+
+        <div class="check-item todo clickable"
+             onclick="toggleDropdown('egg5')">
+          <span class="check-icon">☐</span>
+          <span>逛夜市</span>
+        </div>
+
+        <div class="egg-message" id="egg5">
+【簡答題】女朋友沒玩過彈珠台怎麼辦？
+【解】潘先生負責帶他女朋友去夜市，親自教學。教到她會為止😎
+        </div>
+
+
+        <div class="check-item todo clickable"
+             onclick="toggleDropdown('egg6')">
+          <span class="check-icon">☐</span>
+          <span>陪我吃第二支五塊的冰棒🍦</span>
+        </div>
+
+        <div class="egg-message" id="egg6">
+【敘述題】前幾天去全家買了一支古娃娃的冰棒，店員突然問我：「第二支五塊要不要加購？」然後我心裡默默想：都已經有男朋友了，為什麼我還是沒有人陪我吃第二支冰啊？
+【解】請潘先生親自解答
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==================== PAGE 10：彩蛋統計 ==================== -->
+
+<section class="page" id="page10">
+  <div class="page-inner">
+
+    <div class="card egg-score">
+
+      <div class="section-heading">
+        <h2>彩蛋紀錄</h2>
+        <span>HOW MANY DID YOU FIND?</span>
+      </div>
+
+      <div class="score-number">
+        <span id="eggCount">0</span>
+      </div>
+
+      <div class="score-total">/ 6 EGGS</div>
+
+      <div class="score-message" id="scoreMessage">
+        目前一個都還沒找到喔。<br>
+        提示：有些月亮，不只是月亮；有些清單，也不只是清單。
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==================== PAGE 11：照片 ==================== -->
+
+<section class="page" id="page11">
+  <div class="page-inner">
+
+    <div class="section-heading">
+      <h2>我們的小小紀錄</h2>
+      <span>SOME MOMENTS</span>
+    </div>
+
+    <div class="photo-grid">
+
+      <div class="photo-card">
+        <img src="photos/01.jpg" alt="第一次牽手手">
+        <div class="photo-caption">第一次牽手手</div>
+      </div>
+
+      <div class="photo-card">
+        <img src="photos/02.jpg" alt="喜歡這張">
+        <div class="photo-caption">喜歡這張❤️</div>
+      </div>
+
+      <div class="photo-card">
+        <img src="photos/03.jpg" alt="生日驚喜">
+        <div class="photo-caption">想不到你也有點浪漫🌹幫我準備生日驚喜～</div>
+      </div>
+
+      <div class="photo-card">
+        <img src="photos/04.jpg" alt="你在假裝畫畫">
+        <div class="photo-caption">你在假裝畫畫😶</div>
+      </div>
+
+      <div class="photo-card">
+        <img src="photos/05.jpg" alt="第一次在台南一起吃飯">
+        <div class="photo-caption">第一次在台南一起吃飯～</div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==================== PAGE 12：感性的話 ==================== -->
+
+<section class="page" id="page12">
+  <div class="page-inner">
+
+    <div class="card">
+
+      <div class="card-title">A LITTLE MORE</div>
+
+      <p>
+        前面講的好像有點沉重，所以這裡來點歡樂的～偷偷跟你說，每次跟你在一起的時候，時間都過得好快好快，真的恨不得時間可以暫停一下，讓我們再多一點、再多一點相處的時間。
+      </p>
+
+      <p>
+        我好喜歡你講的笑話，就算有時候真的很爛很爛，我還是會覺得很好笑哈哈哈。好喜歡你溫暖的抱抱，好喜歡你摸摸我的頭，跟我說沒事，也好喜歡跟你待在一起，兩個人一起講一些很垃圾、很沒有營養的話，然後莫名其妙就可以開心很久。
+      </p>
+
+      <p>
+        所以我才沒有說不出談戀愛的功能好嗎！😤明明就有，而且還算運作良好（？
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==================== PAGE 13：邀約 ==================== -->
+
+<section class="page" id="page13">
+  <div class="page-inner">
+
+    <div class="card form-card">
+
+      <div class="section-heading">
+        <h2>那我們去約會吧</h2>
+        <span>LET'S MAKE SOME PLANS</span>
+      </div>
+
+      <form id="dateForm">
+
+        <div class="form-group">
+          <label for="date">想約哪一天？</label>
+          <input type="date" id="date" name="date">
+        </div>
+
+        <div class="form-group">
+          <label for="activity">想一起做什麼？</label>
+          <input
+            type="text"
+            id="activity"
+            name="activity"
+            placeholder="例如：吃飯、散步、看電影……"
+          >
+        </div>
+
+        <div class="submit-area">
+          <button class="submit-btn" type="submit">送給我</button>
+        </div>
+
+        <div class="form-status" id="dateStatus"></div>
+
+      </form>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==================== PAGE 14：留言 ==================== -->
+
+<section class="page" id="page14">
+  <div class="page-inner">
+
+    <div class="card form-card">
+
+      <div class="section-heading">
+        <h2>最後想跟我說什麼呢？</h2>
+        <span>A LITTLE MESSAGE</span>
+      </div>
+
+      <form id="messageForm">
+
+        <div class="form-group">
+          <label for="message">想對我說什麼呢？</label>
+
+          <textarea
+            id="message"
+            name="message"
+            placeholder="慢慢打，我會看完的。"
+          ></textarea>
+        </div>
+
+        <div class="submit-area">
+          <button class="submit-btn" type="submit">送給我</button>
+        </div>
+
+        <div class="form-status" id="messageStatus"></div>
+
+      </form>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==================== PAGE 15：結尾 ==================== -->
+
+<section class="page" id="page15">
+  <div class="page-inner">
+
+    <div class="final-page">
+
+      <div class="cover-moon"></div>
+
+      <h2>一個月快樂🫶</h2>
+
+      <p>
+        希望這只是我們很多很多個月的其中一個。
+      </p>
+
+      <button class="restart-btn" onclick="restartLetter()">
+        重新觀看
+      </button>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==================== 月亮彩蛋 ==================== -->
+
+<div class="egg-overlay" id="eggOverlay">
+  <div class="egg-modal">
+
+    <p id="eggModalText"></p>
+
+    <button class="return-btn" onclick="closeEgg()">
+      【返回原文】
+    </button>
+
+  </div>
+</div>
+
+
+<!-- ==================== 導覽 ==================== -->
+
+<div class="nav-area">
+
+  <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">
+    上一頁
+  </button>
+
+  <div class="page-counter">
+    <span id="currentPage">1</span> / 15
+  </div>
+
+  <button class="nav-btn" id="nextBtn" onclick="changePage(1)">
+    下一頁
+  </button>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   頁面控制
+========================================================= */
+
+let currentPage = 1;
+
+const totalPages = 15;
+
+function updatePage(scroll = true) {
+
+  document.querySelectorAll(".page").forEach((page, index) => {
+    page.classList.toggle("active", index + 1 === currentPage);
+  });
+
+  document.getElementById("currentPage").textContent = currentPage;
+
+  document.getElementById("prevBtn").disabled = currentPage === 1;
+
+  document.getElementById("nextBtn").disabled = currentPage === totalPages;
+
+  if (scroll) {
+    window.scrollTo(0, 0);
+  }
+}
+
+
+function changePage(direction) {
+
+  const nextPage = currentPage + direction;
+
+  if (nextPage < 1 || nextPage > totalPages) {
+    return;
+  }
+
+  closeEgg();
+
+  currentPage = nextPage;
+
+  updatePage(true);
+}
+
+
+/* =========================================================
+   重新觀看
+   特別處理成直接回到第一頁，不使用 smooth scroll，
+   避免從最後一頁回去時出現異常。
+========================================================= */
+
+function restartLetter() {
+
+  closeEgg();
+
+  document.querySelectorAll(".egg-message").forEach(message => {
+    message.classList.remove("show");
+  });
+
+  currentPage = 1;
+
+  updatePage(false);
+
+  window.scrollTo(0, 0);
+}
+
+
+/* =========================================================
+   彩蛋系統
+========================================================= */
+
+const foundEggs = new Set();
+
+const moonEggs = {
+
+  1: `【計算題】如果我們一周見面四次，平均一次見面2.5小時，扣掉開學前的遠距，那我們實際見面的時間有多少？
+
+【解】3周* 4次/周* 2.5小時/次 = 30小時
+
+(我自己算一算也覺得很荒謬，居然不到兩天耶哈哈哈)`,
+
+  2: `我也好害怕，我的不開心會讓你覺得很愧疚。有時候你問我：「怎麼了？」我其實不太敢回答。因為我知道自己的失落，也知道你的身不由己，所以很多事情就變得好難以啟齒。所以有時候就只是抱著你，抱著抱著突然覺得好想哭，可是真的要哭的時候，又好像怎麼都哭不出來。`,
+
+  3: `【簡答題】你知道為什麼有時候你跟我說你要忙，或是問我「能不能⋯⋯」的時候，我其實都會覺得很無可奈何嗎？
+
+【解】因為你的理由每次都正當到，我根本沒有辦法拒絕你。明明我心裡其實沒有那麼希望你這樣做，甚至會有一點點失落，可是想到「好像真的有理由欸」，我就只能默默說好哈哈哈。`
+
+};
+
+
+function showEgg(number) {
+
+  foundEggs.add(number);
+
+  updateEggScore();
+
+  document.getElementById("eggModalText").textContent =
+    moonEggs[number];
+
+  document.getElementById("eggOverlay").classList.add("show");
+
+}
+
+
+function closeEgg() {
+
+  document.getElementById("eggOverlay").classList.remove("show");
+
+}
+
+
+/* 點擊遮罩也可以關閉 */
+
+document.getElementById("eggOverlay").addEventListener("click", function(event) {
+
+  if (event.target === this) {
+    closeEgg();
+  }
+
+});
+
+
+/* =========================================================
+   清單彩蛋
+========================================================= */
+
+const checklistEggMap = {
+  egg4: 4,
+  egg5: 5,
+  egg6: 6
+};
+
+
+function toggleDropdown(id) {
+
+  const element = document.getElementById(id);
+
+  if (!element) {
+    return;
+  }
+
+  const isShowing = element.classList.contains("show");
+
+  if (isShowing) {
+    element.classList.remove("show");
+    return;
+  }
+
+  element.classList.add("show");
+
+  const eggNumber = checklistEggMap[id];
+
+  if (eggNumber) {
+    foundEggs.add(eggNumber);
+    updateEggScore();
+  }
+}
+
+
+/* =========================================================
+   彩蛋計數
+========================================================= */
+
+function updateEggScore() {
+
+  const count = foundEggs.size;
+
+  document.getElementById("eggCount").textContent = count;
+
+  const message = document.getElementById("scoreMessage");
+
+  if (count === 0) {
+
+    message.innerHTML =
+      "目前一個都還沒找到喔。<br>" +
+      "提示：有些月亮，不只是月亮；有些清單，也不只是清單。";
+
+  } else if (count === 1) {
+
+    message.innerHTML =
+      "找到一個了。<br>" +
+      "提示：除了你剛剛找到的地方，其他頁面也可以偷偷點一點。";
+
+  } else if (count === 2) {
+
+    message.innerHTML =
+      "已經找到兩個了。<br>" +
+      "再仔細看看那些看起來很普通的月亮和清單。";
+
+  } else if (count === 3) {
+
+    message.innerHTML =
+      "三個彩蛋！<br>" +
+      "還有一半藏在生活清單裡。";
+
+  } else if (count === 4) {
+
+    message.innerHTML =
+      "四個了！<br>" +
+      "剩下的彩蛋，繼續往生活清單找找看。";
+
+  } else if (count === 5) {
+
+    message.innerHTML =
+      "只差一個！<br>" +
+      "最後一個也藏在生活清單裡。";
+
+  } else {
+
+    message.innerHTML =
+      "六個全部找到！<br>" +
+      "潘先生解鎖隱藏內容成功。";
+
+  }
+}
+
+
+/* =========================================================
+   表單：邀約
+========================================================= */
+
+const FORM_ENDPOINT =
+  "https://formsubmit.co/ajax/xinyuc92@gmail.com";
+
+
+document.getElementById("dateForm").addEventListener("submit", async function(event) {
+
+  event.preventDefault();
+
+  const status = document.getElementById("dateStatus");
+
+  const date = document.getElementById("date").value;
+
+  const activity = document.getElementById("activity").value;
+
+  const formData = new FormData();
+
+  formData.append("_subject", "一個月邀約");
+  formData.append("_template", "table");
+  formData.append("日期", date || "未填寫");
+  formData.append("想做什麼", activity || "未填寫");
+
+  status.textContent = "正在送給我……";
+
+  try {
+
+    const response = await fetch(FORM_ENDPOINT, {
+      method: "POST",
+      body: formData,
+      headers: {
+        "Accept": "application/json"
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error("送出失敗");
+    }
+
+    status.textContent = "收到啦。";
+
+    document.getElementById("dateForm").reset();
+
+  } catch (error) {
+
+    status.textContent =
+      "好像送不出去，再試一次看看。";
+
+  }
+
+});
+
+
+/* =========================================================
+   表單：留言
+========================================================= */
+
+document.getElementById("messageForm").addEventListener("submit", async function(event) {
+
+  event.preventDefault();
+
+  const status = document.getElementById("messageStatus");
+
+  const message = document.getElementById("message").value;
+
+  const formData = new FormData();
+
+  formData.append("_subject", "一個月留言");
+  formData.append("_template", "table");
+  formData.append("想對我說", message || "未填寫");
+
+  status.textContent = "正在送給我……";
+
+  try {
+
+    const response = await fetch(FORM_ENDPOINT, {
+      method: "POST",
+      body: formData,
+      headers: {
+        "Accept": "application/json"
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error("送出失敗");
+    }
+
+    status.textContent = "我收到你的話了。";
+
+    document.getElementById("messageForm").reset();
+
+  } catch (error) {
+
+    status.textContent =
+      "好像送不出去，再試一次看看。";
+
+  }
+
+});
+
+
+/* =========================================================
+   初始化
+========================================================= */
+
+updateEggScore();
+
+updatePage(false);
+
+</script>
+
+</body>
+</html>
